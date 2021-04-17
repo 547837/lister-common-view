@@ -8,6 +8,10 @@
 import Foundation
 import SwiftUI
 
+#if !os(macOS)
+import UIKit
+#endif
+
 extension View {
     
     #if !os(macOS)
@@ -33,6 +37,36 @@ extension View {
     /// - Returns: description
     public func alert(isPresented: Binding<Bool>, _ content: TextFieldAlert) -> some View {
         TextFieldWrapper(presentingView: self, content: content, isPresented: isPresented)
+    }
+    
+    /// 提供中间视图的navigationBarItems
+    /// - Parameters:
+    ///   - leading: 左边
+    ///   - center: 中间
+    ///   - trailing: 右边
+    /// - Returns: description
+    func navigationBarItems<L, C, T>(leading: L, center: C, trailing: T) -> some View where L: View, C: View, T: View {
+        self.navigationBarItems(leading:
+            HStack{
+                HStack {
+                    leading
+                }
+                .frame(width: 80, alignment: .leading)
+                .font(.none)
+                Spacer()
+                HStack {
+                    center
+                }
+                .frame(width: 130, alignment: .center)
+                Spacer()
+                HStack {
+                    trailing
+                }
+                .frame(width: 80, alignment: .trailing)
+                .font(.none)
+            }
+            .frame(width: UIScreen.main.bounds.size.width - 31)
+        )
     }
     
     #endif
