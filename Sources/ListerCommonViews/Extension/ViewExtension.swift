@@ -45,7 +45,7 @@ extension View {
     ///   - center: 中间
     ///   - trailing: 右边
     /// - Returns: description
-    func navigationBarItems<L, C, T>(leading: L, center: C, trailing: T) -> some View where L: View, C: View, T: View {
+    public func navigationBarItems<L, C, T>(leading: L, center: C, trailing: T) -> some View where L: View, C: View, T: View {
         self.navigationBarItems(leading:
             HStack{
                 HStack {
