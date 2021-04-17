@@ -42,6 +42,7 @@ extension View {
     /// - Parameter isRedacted: 条件
     /// - Returns:
     @available(OSX 11.0, *)
+    @available(iOS 14.0, *)
     @ViewBuilder public func redacted(_ isRedacted: Bool) -> some View  {
         if isRedacted {
             self.redacted(reason: .placeholder)
