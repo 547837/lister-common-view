@@ -40,7 +40,7 @@ public struct SearchBar: UIViewControllerRepresentable {
         private var subscription: AnyCancellable?
         
         /// @escaping 解决逃逸闭包的方式 https://www.jianshu.com/p/dd0537a40fc6
-        init(search: @escaping (_ text: String) -> Void) {
+        public init(search: @escaping (_ text: String) -> Void) {
             self.searchController = UISearchController(searchResultsController: nil)
             self.search = search
             super.init()
@@ -52,7 +52,7 @@ public struct SearchBar: UIViewControllerRepresentable {
             searchController.obscuresBackgroundDuringPresentation = false
         }
         
-        func updateSearchResults(for searchController: UISearchController) {
+        public func updateSearchResults(for searchController: UISearchController) {
             guard let text = searchController.searchBar.text else { return }
             self.search(text)
         }
