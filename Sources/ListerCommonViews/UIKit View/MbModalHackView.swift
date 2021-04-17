@@ -68,18 +68,4 @@ extension UIViewController {
     }
 }
 
-/// make the call the SwiftUI style:
-/// view.allowAutDismiss(...)
-extension View {
-    /// Control if allow to dismiss the sheet by the user actions
-    public func allowAutoDismiss(_ dismissable: @escaping () -> Bool) -> some View {
-        self.background(MbModalHackView(dismissable: dismissable))
-    }
-    
-    /// Control if allow to dismiss the sheet by the user actions
-    public func allowAutoDismiss(_ dismissable: Bool) -> some View {
-        self.background(MbModalHackView(dismissable: { dismissable }))
-    }
-}
-
 #endif
