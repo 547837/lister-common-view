@@ -17,14 +17,24 @@ public struct TextFieldAlert {
     // MARK: Instance var
     
     public let title: String
-    public let message: String = ""
+    public var message: String = ""
     public var placeholder: String = "" // Placeholder text for the TextField
     public var defaultValue: String = ""
     public var keyboardType: UIKeyboardType = .default // Keyboard tzpe of the TextField
-    public var accept: String // The left-most button label
+    public let accept: String // The left-most button label
     public var cancel: String? // The optional cancel (right-most) button label
     public var action: (String?) -> Void // Triggers when either of the two buttons closes the dialog
     
+    public init(title: String, message: String = "", placeholder: String = "", defaultValue: String = "", keyboardType: UIKeyboardType = .default, accept: String, cancel: String?, action: @escaping (String?) -> Void) {
+        self.title = title
+        self.message = message
+        self.placeholder = placeholder
+        self.defaultValue = defaultValue
+        self.keyboardType = keyboardType
+        self.accept = accept
+        self.cancel = cancel
+        self.action = action
+    }
 }
 
 public class TextFieldAlertViewController: UIViewController {
