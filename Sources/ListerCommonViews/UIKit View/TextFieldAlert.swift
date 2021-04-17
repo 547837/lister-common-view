@@ -109,12 +109,4 @@ public struct TextFieldWrapper<PresentingView: View>: View {
     }
 }
 
-extension View {
-    
-    public func alert(isPresented: Binding<Bool>, _ content: TextFieldAlert) -> some View {
-        TextFieldWrapper(isPresented: isPresented, presentingView: self, content: content)
-    }
-    
-}
-
 #endif
