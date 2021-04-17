@@ -32,7 +32,7 @@ extension View {
     ///   - content: content description
     /// - Returns: description
     public func alert(isPresented: Binding<Bool>, _ content: TextFieldAlert) -> some View {
-        TextFieldWrapper(presentingView: isPresented, content: self, isPresented: content)
+        TextFieldWrapper(isPresented: isPresented, presentingView: self, content: content)
     }
     
     #endif
