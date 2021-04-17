@@ -1,3 +1,3 @@
-# lister-common-view
+# ListerCommonViews
 
 A description of this package.
