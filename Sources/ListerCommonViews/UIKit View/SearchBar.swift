@@ -8,14 +8,9 @@
 import SwiftUI
 import Combine
 
-public extension View {
-    
-
-}
-
 public struct SearchBar: UIViewControllerRepresentable {
     
-    typealias UIViewControllerType = SearchBarWrapperController
+    public typealias UIViewControllerType = SearchBarWrapperController
     
     public var search: (_ text: String) -> Void
     
@@ -64,16 +59,16 @@ public struct SearchBar: UIViewControllerRepresentable {
     }
     
     public class SearchBarWrapperController: UIViewController {
-        var searchController: UISearchController? {
+        public var searchController: UISearchController? {
             didSet {
                 self.parent?.navigationItem.searchController = searchController
             }
         }
         
-        override func viewWillAppear(_ animated: Bool) {
+        public override func viewWillAppear(_ animated: Bool) {
             self.parent?.navigationItem.searchController = searchController
         }
-        override func viewDidAppear(_ animated: Bool) {
+        public override func viewDidAppear(_ animated: Bool) {
             self.parent?.navigationItem.searchController = searchController
         }
     }

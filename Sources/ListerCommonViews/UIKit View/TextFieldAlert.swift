@@ -10,18 +10,19 @@
 import Foundation
 import Combine
 import SwiftUI
+import ListerCommon
 
 public struct TextFieldAlert {
     
     // MARK: Instance var
     
-    public let title: String
-    public let message: String?
-    public var placeholder: String = "" // Placeholder text for the TextField
-    public var defaultValue: String = ""
-    public var keyboardType: UIKeyboardType = .default // Keyboard tzpe of the TextField
-    public var accept: String = "好".localizedString // The left-most button label
-    public var cancel: String? = "取消".localizedString // The optional cancel (right-most) button label
+    let title: String
+    let message: String = ""
+    var placeholder: String = "" // Placeholder text for the TextField
+    var defaultValue: String = ""
+    var keyboardType: UIKeyboardType = .default // Keyboard tzpe of the TextField
+    public var accept: String // The left-most button label
+    public var cancel: String? // The optional cancel (right-most) button label
     public var action: (String?) -> Void // Triggers when either of the two buttons closes the dialog
     
 }
@@ -46,7 +47,7 @@ public class TextFieldAlertViewController: UIViewController {
     private var subscription: AnyCancellable?
     
     // Lifecycle
-    override func viewDidAppear(_ animated: Bool) {
+    public override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         presentAlertController()
     }
@@ -78,16 +79,16 @@ public class TextFieldAlertViewController: UIViewController {
 // MARK: - AlertWrapper
 public struct AlertWrapper:  UIViewControllerRepresentable {
     
-    @Binding var isPresented: Bool
-    let alert: TextFieldAlert
+    @Binding public var isPresented: Bool
+    public let alert: TextFieldAlert
     
-    typealias UIViewControllerType = TextFieldAlertViewController
+    public typealias UIViewControllerType = TextFieldAlertViewController
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<AlertWrapper>) -> UIViewControllerType {
+    public func makeUIViewController(context: UIViewControllerRepresentableContext<AlertWrapper>) -> UIViewControllerType {
         TextFieldAlertViewController(isPresented: $isPresented, alert: alert)
     }
     
-    func updateUIViewController(_ uiViewController: UIViewControllerType, context: UIViewControllerRepresentableContext<AlertWrapper>) {
+    public func updateUIViewController(_ uiViewController: UIViewControllerType, context: UIViewControllerRepresentableContext<AlertWrapper>) {
         // no update needed
     }
 }
@@ -95,9 +96,16 @@ public struct AlertWrapper:  UIViewControllerRepresentable {
 // MARK: - TextFieldWrapper
 public struct TextFieldWrapper<PresentingView: View>: View {
     
-    @Binding var isPresented: Bool
-    let presentingView: PresentingView
-    let content: TextFieldAlert
+    // MARK: Instance var
+    
+    public let presentingView: PresentingView
+    public let content: TextFieldAlert
+    
+    // MARK: Binding
+    
+    @Binding public var isPresented: Bool
+    
+    // MARK: View
     
     var body: some View {
         ZStack {

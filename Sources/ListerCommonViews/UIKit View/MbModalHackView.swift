@@ -15,11 +15,11 @@ public struct MbModalHackView: UIViewControllerRepresentable {
     
     public var dismissable: () -> Bool = { false }
     
-    func makeUIViewController(context: UIViewControllerRepresentableContext<MbModalHackView>) -> UIViewController {
+    public func makeUIViewController(context: UIViewControllerRepresentableContext<MbModalHackView>) -> UIViewController {
         MbModalViewController(dismissable: self.dismissable)
     }
     
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
+    public func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
         
     }
 }
