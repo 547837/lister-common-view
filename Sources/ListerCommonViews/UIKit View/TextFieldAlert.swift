@@ -16,11 +16,11 @@ public struct TextFieldAlert {
     
     // MARK: Instance var
     
-    let title: String
-    let message: String = ""
-    var placeholder: String = "" // Placeholder text for the TextField
-    var defaultValue: String = ""
-    var keyboardType: UIKeyboardType = .default // Keyboard tzpe of the TextField
+    public let title: String
+    public let message: String = ""
+    public var placeholder: String = "" // Placeholder text for the TextField
+    public var defaultValue: String = ""
+    public var keyboardType: UIKeyboardType = .default // Keyboard tzpe of the TextField
     public var accept: String // The left-most button label
     public var cancel: String? // The optional cancel (right-most) button label
     public var action: (String?) -> Void // Triggers when either of the two buttons closes the dialog
