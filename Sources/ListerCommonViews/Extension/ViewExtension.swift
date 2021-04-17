@@ -20,7 +20,7 @@ extension View {
     /// - Parameter search: search function
     /// - Returns: SearchBar
     /// @escaping 解决逃逸闭包的方式 https://www.jianshu.com/p/dd0537a40fc6
-    func navigationBarSearch(search: @escaping (_ text: String) -> Void) -> some View {
+    public func navigationBarSearch(search: @escaping (_ text: String) -> Void) -> some View {
         return overlay(
             SearchBar(search: search).frame(width: 0, height: 0)
         )
