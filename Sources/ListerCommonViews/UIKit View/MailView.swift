@@ -19,6 +19,13 @@ public struct MailView: UIViewControllerRepresentable {
     @Binding public var isShowing: Bool
     @Binding public var result: Result<MFMailComposeResult, Error>?
     
+    public init(subject: String, toRecipients: [String], isShowing: Binding<Bool>, result: Binding<Result<MFMailComposeResult, Error>?>) {
+        self.subject = subject
+        self.toRecipients = toRecipients
+        self._isShowing = isShowing
+        self._result = result
+    }
+    
     public func makeUIViewController(context: UIViewControllerRepresentableContext<MailView>) -> MFMailComposeViewController {
         let mail = MFMailComposeViewController()
         mail.mailComposeDelegate = context.coordinator
