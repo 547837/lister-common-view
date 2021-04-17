@@ -107,7 +107,7 @@ public struct TextFieldWrapper<PresentingView: View>: View {
     
     // MARK: View
     
-    var body: some View {
+    public var body: some View {
         ZStack {
             presentingView
             if (isPresented) {
