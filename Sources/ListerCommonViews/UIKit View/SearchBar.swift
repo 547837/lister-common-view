@@ -10,15 +10,7 @@ import Combine
 
 public extension View {
     
-    /// 在NavigationBar下嵌套搜索框
-    /// - Parameter search: search function
-    /// - Returns: SearchBar
-    /// @escaping 解决逃逸闭包的方式 https://www.jianshu.com/p/dd0537a40fc6
-    func navigationBarSearch(search: @escaping (_ text: String) -> Void) -> some View {
-        return overlay(
-            SearchBar(search: search).frame(width: 0, height: 0)
-        )
-    }
+
 }
 
 public struct SearchBar: UIViewControllerRepresentable {
