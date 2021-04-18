@@ -51,7 +51,7 @@ extension View {
                 HStack {
                     leading
                 }
-                .frame(width: 80, alignment: .leading)
+                .frame(width: 82, alignment: .leading)
                 .font(.none)
                 Spacer()
                 HStack {
@@ -62,7 +62,7 @@ extension View {
                 HStack {
                     trailing
                 }
-                .frame(width: 80, alignment: .trailing)
+                .frame(width: 82, alignment: .trailing)
                 .font(.none)
             }
             .frame(width: UIScreen.main.bounds.size.width - 31)
