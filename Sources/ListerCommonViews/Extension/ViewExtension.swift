@@ -45,6 +45,7 @@ extension View {
     ///   - center: 中间
     ///   - trailing: 右边
     /// - Returns: description
+    @available(iOS 14.0, *)
     public func navigationBarItems<L, C, T>(leading: L, center: C, trailing: T) -> some View where L: View, C: View, T: View {
         self.navigationBarItems(leading:leading, trailing: trailing)
             .toolbar {
@@ -52,6 +53,37 @@ extension View {
                     center
                 }
             }
+    }
+    
+    
+    /// 提供中间视图的navigationBarItems
+    /// - Parameters:
+    ///   - leading: 左边
+    ///   - center: 中间
+    ///   - trailing: 右边
+    /// - Returns: description
+    public func navigationBarItems<L, C, T>(leading: L, center: C, trailing: T) -> some View where L: View, C: View, T: View {
+        self.navigationBarItems(leading:
+            HStack{
+                HStack {
+                    leading
+                }
+                .frame(width: 82, alignment: .leading)
+                .font(.none)
+                Spacer()
+                HStack {
+                    center
+                }
+                .frame(width: 130, alignment: .center)
+                Spacer()
+                HStack {
+                    trailing
+                }
+                .frame(width: 82, alignment: .trailing)
+                .font(.none)
+            }
+            .frame(width: UIScreen.main.bounds.size.width - 31)
+        )
     }
     
     #endif
