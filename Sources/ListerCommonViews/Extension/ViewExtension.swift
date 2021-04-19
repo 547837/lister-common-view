@@ -55,14 +55,13 @@ extension View {
             }
     }
     
-    
     /// 提供中间视图的navigationBarItems
     /// - Parameters:
     ///   - leading: 左边
     ///   - center: 中间
     ///   - trailing: 右边
     /// - Returns: description
-    public func navigationBarItems<L, C, T>(leading: L, center: C, trailing: T) -> some View where L: View, C: View, T: View {
+    public func navigationBarItemsForiOS13<L, C, T>(leading: L, center: C, trailing: T) -> some View where L: View, C: View, T: View {
         self.navigationBarItems(leading:
             HStack{
                 HStack {
