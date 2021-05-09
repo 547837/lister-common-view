@@ -10,7 +10,6 @@
 import Foundation
 import Combine
 import SwiftUI
-import ListerCommon
 
 public struct TextFieldAlert {
     
