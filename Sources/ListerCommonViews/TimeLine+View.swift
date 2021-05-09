@@ -41,7 +41,7 @@ public struct TimeLineView<TimeView: View, Content: View>: View {
             GeometryReader { geo in
                 Path { path in
                     path.move(to: CGPoint(x: leftWidth, y: 0))
-                    path.addLine(to: CGPoint(x: leftWidth, y: geo.size.height + 10))
+                    path.addLine(to: CGPoint(x: leftWidth, y: geo.size.height + 15))
                 }
                 .stroke(Color("TimeLineColor"), lineWidth: 1)
                 .padding(.top, 7)
