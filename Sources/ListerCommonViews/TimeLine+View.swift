@@ -7,23 +7,23 @@
 
 import SwiftUI
 
-public struct TimeLineView<LeftView: View, RightView: View>: View {
+public struct TimeLineView<TimeView: View, Content: View>: View {
     
     var leftWidth: CGFloat { UIScreen.main.bounds.size.width * 0.2 }
     var rightWidth: CGFloat { UIScreen.main.bounds.size.width - leftWidth }
     
-    private let leftView: LeftView
-    private let rightView: RightView
+    private let timeView: TimeView
+    private let content: Content
     
-    public init(@ViewBuilder leftView: () -> LeftView, @ViewBuilder rightView: () -> RightView) {
-        self.leftView = leftView()
-        self.rightView = rightView()
+    public init(@ViewBuilder timeView: () -> TimeView, @ViewBuilder content: () -> Content) {
+        self.timeView = timeView()
+        self.content = content()
     }
     
     public var body: some View {
         HStack(alignment: .top) {
             VStack(alignment: .trailing, spacing: 2) {
-                leftView
+                timeView
             }
             .minimumScaleFactor(0.5)
             .padding(.horizontal, 10)
@@ -33,7 +33,7 @@ public struct TimeLineView<LeftView: View, RightView: View>: View {
             )
             
             VStack(alignment: .leading, spacing: 5) {
-                rightView
+                content
             }
             .frame(width: rightWidth, alignment: .leading)
         }
@@ -68,7 +68,7 @@ struct TimeLineView_Previews: PreviewProvider {
                     Text("4月1日").font(.none)
                     Text("2021年").font(.footnote)
                 }
-            } rightView: {
+            } content: {
                 VStack(alignment: .leading) {
                     Text("借出").fontWeight(.bold).foregroundColor(.blue)
                     Text("金额 99999")
