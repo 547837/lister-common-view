@@ -25,6 +25,7 @@ public struct TimeLineView<TimeView: View, Content: View>: View {
             VStack(alignment: .trailing, spacing: 2) {
                 timeView
             }
+            .lineLimit(1)
             .minimumScaleFactor(0.5)
             .padding(.horizontal, 10)
             .frame(width: leftWidth, alignment: .trailing)
