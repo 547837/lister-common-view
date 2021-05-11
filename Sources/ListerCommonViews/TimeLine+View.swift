@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct TimeLineView<TimeView: View, Content: View>: View {
+public struct TimeLineView<TimeView, Content>: View where TimeView: View, Content: View {
     
     var leftWidth: CGFloat { UIScreen.main.bounds.size.width * 0.2 }
     var rightWidth: CGFloat { UIScreen.main.bounds.size.width - leftWidth }
